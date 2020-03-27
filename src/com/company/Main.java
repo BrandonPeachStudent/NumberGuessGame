@@ -13,47 +13,46 @@ public class Main {
         System.out.println("Let's Play!");
         System.out.println("Enter a guess between 1-100");
 
+        String answer;
         int secretNumber = (int) (Math.random() * 100) + 1;
         int numberOfGuesses = 1;
         Scanner keyboard = new Scanner(System.in);
         int guess = keyboard.nextInt();
         if (guess < secretNumber) {
-            System.out.println("guess higher");
+            System.out.println("Guess higher");
+        } else if (guess > secretNumber) {
+            System.out.println("Guess lower");
+        } else {
+            System.out.println("Congratulations! It took you " + numberOfGuesses + " tries. Do you want to play again?");
         }
-        else if (guess > secretNumber) {
-            System.out.println("guess lower");
-        }
-        else {
-            System.out.println("Congratulations! It took you "+numberOfGuesses+" tries. Do you want to play again?");
-        }
-
-
 
 
         do {
             System.out.println("Enter your guess");
             keyboard = new Scanner(System.in);
             guess = keyboard.nextInt();
-            ++ numberOfGuesses;
+            ++numberOfGuesses;
 
             if (guess < secretNumber) {
-                System.out.println("guess higher");
-            }
-            else if (guess > secretNumber) {
-                System.out.println("guess lower");
-            }
-            else {
-                System.out.println("Congratulations! It took you "+numberOfGuesses+" tries.");
+                System.out.println("Guess higher");
+            } else if (guess > secretNumber) {
+                System.out.println("Guess lower");
+            } else {
+                System.out.println("Congratulations! It took you " + numberOfGuesses + " tries.");
             }
         } while (guess != secretNumber);
 
+        System.out.println("Maybe you'll do better next time. Do you want to play again? (Yes or No)");
+        Scanner key = new Scanner(System.in);
+        answer = key.next();
+        if (answer.equals("yes")) {
+            do {main(args);
 
-        if (guess == secretNumber) {
-            System.out.println("Maybe you can guess quicker next time. Do you want to try again? (Yes or No)");
+            } while (guess != secretNumber);
         }
 
-
-
+        else if (answer.equals("no")) {
+            System.out.println("Okay, thanks for playing!");
         }
     }
-
+}
